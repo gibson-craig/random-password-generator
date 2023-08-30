@@ -94,6 +94,60 @@ function getPasswordOptions() {
   prompt("How many characters would you like your password to contain?")
   )
 
+  if(isNaN(length) === true) {
+    alert(`Password length must be provided as a number`);
+    return;
+  }
+
+  if(length < 10) {
+    alert(`Password length must be at least 10 characters`);
+    return;
+  }
+
+  if(length > 64) {
+    alert(`Password length must be less than 65 characters`);
+    return;
+  }
+
+  let hasSpecialCharacters = confirm(
+    "Click OK to confirm including special characters"
+  )
+
+  let hasNumericCharacters = confirm(
+    "Click OK to confirm including numeric characters"
+  )
+
+  let hasLowercaseCharacters = confirm(
+    "Click OK to confirm including lowercase characters"
+  )
+
+  let hasUppercaseCharacters = confirm(
+    "Click OK to confirm using uppercase characters"
+  )
+
+  if(
+    hasLowercaseCharacters === false &&hasUppercaseCharacters === false &&
+    hasSpecialCharacters === false && 
+    hasNumericCharacters === false) {
+      alert(`Must select at least one character option`);
+      return;
+    }
+
+    let getPasswordOptions = {
+      length: length,
+      hasSpecialCharacters: hasSpecialCharacters,
+      hasLowercaseCharacters: hasLowercaseCharacters,
+      hasUppercaseCharacters: hasUppercaseCharacters,
+      hasNumericCharacters: hasNumericCharacters
+    }
+
+    console.log(getPasswordOptions)
+
+
+
+
+  // alert(length);
+
 
 
 
@@ -110,15 +164,9 @@ function getRandom(arr) {
 
 // Function to generate password with user input
 function generatePassword() {
+  let options = getPasswordOptions();
 
 
-
-// let possibleCharacters = []
-
-// let guaranteeCharacters = []
-
-// if(options.hasSpecialChars)
-//  possibleCharacters = possibleCharacters.concat (????) (hasSpecialChars)
 }
 
 // Get references to the #generate element
